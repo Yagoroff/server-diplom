@@ -1,18 +1,11 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-import dotenv from 'dotenv'
-
-dotenv.config({
-  path: '.env',
-})
 
 const app = new Hono()
+const FILE_URL = "http://minio-bc8ksck.87.242.117.226.sslip.io/moonspaceshipapp/levels.json"
 
 app.get('/', async (c) => {
-  if (!process.env.FILE_URL) {
-    return c.text('FILE_URL is not defined')
-  }
-  const res =  await fetch(process.env.FILE_URL, {
+  const res =  await fetch(FILE_URL, {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
