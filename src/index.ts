@@ -4,7 +4,7 @@ import { Hono } from 'hono'
 const app = new Hono()
 const FILE_URL = "http://minio-bc8ksck.87.242.117.226.sslip.io/moonspaceshipapp/levels.json"
 
-app.get('/', async (c) => {
+app.get('/levels', async (c) => {
   const res =  await fetch(FILE_URL, {
     method: "GET",
     headers: {
